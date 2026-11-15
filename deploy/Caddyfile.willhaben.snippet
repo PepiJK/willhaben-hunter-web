@@ -1,0 +1,13 @@
+willhaben.pepnet.at {
+	encode zstd gzip
+
+	basic_auth {
+		josef <SAME_BCRYPT_HASH_AS_GARMIN>
+	}
+
+	reverse_proxy willhaben-web:8000 {
+		health_uri /api/healthz
+		health_interval 30s
+		health_timeout 5s
+	}
+}

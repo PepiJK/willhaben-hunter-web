@@ -1,0 +1,8 @@
+{
+  "jobId": "11111111-2222-4333-8444-555555555555",
+  "mode": "marketplace",
+  "status": "running",
+  "progress": "Scraping page 1...",
+  "startedAt": "2026-11-09T20:00:00.000Z",
+  "searchUrl": "https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?keyword=fahrrad&isNavigation=true&areaId=900"
+}

@@ -1,0 +1,28 @@
+services:
+  willhaben-web:
+    image: ghcr.io/${GITHUB_REPOSITORY:-pepijk/willhaben-hunter-web}:${IMAGE_TAG:-latest}
+    build: .
+    container_name: willhaben-web
+    restart: unless-stopped
+    init: true
+    mem_limit: 1024m
+    shm_size: 256m
+    ports:
+      - "127.0.0.1:${HOST_PORT:-8001}:8000"
+    environment:
+      TZ: ${TZ:-Europe/Vienna}
+      HOST: 0.0.0.0
+      PORT: 8000
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      STATIC_DIR: /app/static
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      ANTHROPIC_MODEL: ${ANTHROPIC_MODEL:-claude-haiku-5-5}
+      SCRAPE_TIMEOUT_MS: ${SCRAPE_TIMEOUT_MS:-600000}
+      SCRAPE_RESULT_TTL_MS: ${SCRAPE_RESULT_TTL_MS:-1800000}
+      ANALYZE_MAX_INPUT_CHARS: ${ANALYZE_MAX_INPUT_CHARS:-200000}
+    networks:
+      - pepnet_web_net
+
+networks:
+  pepnet_web_net:
+    external: true

@@ -1,0 +1,42 @@
+{
+  "name": "willhaben-hunter-web-backend",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Fastify backend, Chromium worker orchestrator, and Claude Haiku 5.5 analyzer for Willhaben Hunter Web",
+  "packageManager": "npm@11.20.0",
+  "engines": {
+    "node": "26.13.0",
+    "npm": "11.20.0"
+  },
+  "type": "commonjs",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "ts-node src/server.ts",
+    "build": "tsc -p tsconfig.build.json",
+    "start": "node dist/server.js",
+    "smoke": "node dist/smoke.js",
+    "test": "vitest run",
+    "test:ci": "vitest run --coverage",
+    "lint": "eslint src tests",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.80.0",
+    "@fastify/static": "^9.0.0",
+    "fastify": "^5.8.0",
+    "willhaben-hunter": "^1.1.0",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^24.1.0",
+    "@vitest/coverage-v8": "^4.1.10",
+    "eslint": "^10.7.0",
+    "prettier": "^3.8.1",
+    "ts-node": "^10.9.2",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.63.0",
+    "vitest": "^4.1.10"
+  }
+}

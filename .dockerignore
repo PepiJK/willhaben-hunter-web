@@ -1,0 +1,12 @@
+.git
+.github
+.scratch
+.env
+.env.*
+data/
+**/node_modules
+**/dist
+**/coverage
+**/.angular
+**/.vitest
+*.md

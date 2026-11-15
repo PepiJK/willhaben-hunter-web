@@ -1,0 +1,52 @@
+{
+  "modes": ["marketplace"],
+  "marketplace": {
+    "areas": [
+      { "value": "wien", "label": "Wien" },
+      { "value": "niederösterreich", "label": "Niederösterreich" },
+      { "value": "oberösterreich", "label": "Oberösterreich" },
+      { "value": "salzburg", "label": "Salzburg" },
+      { "value": "tirol", "label": "Tirol" },
+      { "value": "vorarlberg", "label": "Vorarlberg" },
+      { "value": "kärnten", "label": "Kärnten" },
+      { "value": "steiermark", "label": "Steiermark" },
+      { "value": "burgenland", "label": "Burgenland" }
+    ],
+    "wienDistricts": [
+      { "value": 1, "label": "1. Bezirk (Innere Stadt)" },
+      { "value": 2, "label": "2. Bezirk (Leopoldstadt)" },
+      { "value": 3, "label": "3. Bezirk (Landstraße)" },
+      { "value": 4, "label": "4. Bezirk (Wieden)" },
+      { "value": 5, "label": "5. Bezirk (Margareten)" },
+      { "value": 6, "label": "6. Bezirk (Mariahilf)" },
+      { "value": 7, "label": "7. Bezirk (Neubau)" },
+      { "value": 8, "label": "8. Bezirk (Josefstadt)" },
+      { "value": 9, "label": "9. Bezirk (Alsergrund)" },
+      { "value": 10, "label": "10. Bezirk (Favoriten)" },
+      { "value": 11, "label": "11. Bezirk (Simmering)" },
+      { "value": 12, "label": "12. Bezirk (Meidling)" },
+      { "value": 13, "label": "13. Bezirk (Hietzing)" },
+      { "value": 14, "label": "14. Bezirk (Penzing)" },
+      { "value": 15, "label": "15. Bezirk (Rudolfsheim-Fünfhaus)" },
+      { "value": 16, "label": "16. Bezirk (Ottakring)" },
+      { "value": 17, "label": "17. Bezirk (Hernals)" },
+      { "value": 18, "label": "18. Bezirk (Währing)" },
+      { "value": 19, "label": "19. Bezirk (Döbling)" },
+      { "value": 20, "label": "20. Bezirk (Brigittenau)" },
+      { "value": 21, "label": "21. Bezirk (Floridsdorf)" },
+      { "value": 22, "label": "22. Bezirk (Donaustadt)" },
+      { "value": 23, "label": "23. Bezirk (Liesing)" }
+    ],
+    "sortOrders": [
+      { "value": "relevanz", "label": "Relevanz" },
+      { "value": "neueste", "label": "Neueste zuerst" },
+      { "value": "preis-aufsteigend", "label": "Preis aufsteigend" },
+      { "value": "preis-absteigend", "label": "Preis absteigend" }
+    ],
+    "limits": {
+      "defaultLimit": 25,
+      "maxWithDetails": 100,
+      "maxSkipDetails": 250
+    }
+  }
+}

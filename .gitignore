@@ -1,0 +1,36 @@
+# Environment files
+.env
+.env*.local
+!.env.example
+
+# Local data directory (kept empty on VPS for openclaw mount compatibility)
+data/
+
+# Node, TypeScript & Angular build artifacts
+node_modules/
+backend/node_modules/
+frontend/node_modules/
+dist/
+backend/dist/
+frontend/dist/
+.angular/
+frontend/.angular/
+.npm/
+
+# Test coverage & caches
+coverage/
+backend/coverage/
+frontend/coverage/
+.vitest/
+*.tsbuildinfo
+
+# Scratch & interview notes
+.scratch/
+
+# OS / Editor artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/

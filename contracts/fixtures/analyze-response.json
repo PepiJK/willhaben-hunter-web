@@ -1,0 +1,37 @@
+{
+  "model": "claude-haiku-5-5",
+  "summary": "Unter den 3 untersuchten Inseraten für die Suche nach Fahrrad-Zubehör in Wien bietet das Herren-Fahrradshirt (Größe L) um € 8 das beste sofort nutzbare Preis-Leistungs-Verhältnis, während die Vintage-Hinterradfelgen explizit als defekt für Bastler ausgewiesen sind.",
+  "totalEvaluated": 3,
+  "truncatedFields": 0,
+  "droppedRecommendations": 0,
+  "recommendations": [
+    {
+      "rank": 1,
+      "id": "911861422",
+      "title": "Männershirt",
+      "price": "€ 8",
+      "url": "https://www.willhaben.at/iad/kaufen-und-verkaufen/d/maennershirt-911861422/",
+      "fitScore": 84,
+      "verdict": "top-pick",
+      "justification": "Günstiges gebrauchtes Fahrradshirt in Größe L mit exakter Maßangabe (52,5 cm Achsel zu Achsel) sowie Abhol- und Versandoption.",
+      "pros": ["Niedriger Preis (€ 8)", "Maßangabe vorhanden", "Selbstabholung und Versand möglich"],
+      "cons": ["Keine spezifische Markenangabe"]
+    },
+    {
+      "rank": 2,
+      "id": "816861100",
+      "title": "4 x Vintage Fahrradfelge Hinterrad mit Torpedo 3-Gang-Nabe",
+      "price": "€ 7",
+      "url": "https://www.willhaben.at/iad/kaufen-und-verkaufen/d/4-x-vintage-fahrradfelge-hinterrad-mit-torpedo-3-gang-nabe-816861100/",
+      "fitScore": 52,
+      "verdict": "caution",
+      "justification": "Sehr günstige Ersatzteilquelle (€ 7 pro Stück bzw. € 20 für alle 4) in 1070 Wien, jedoch ausdrücklich als defekt für Bastler deklariert.",
+      "pros": [
+        "Transparente Fehlerbeschreibung",
+        "Paketpreis € 20 für 4 Felgen",
+        "Abholung in 1070 Wien"
+      ],
+      "cons": ["Zustand: Defekt (Rücktritt schmiert / dreht durch)", "Nur für Bastler geeignet"]
+    }
+  ]
+}

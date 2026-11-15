@@ -1,0 +1,40 @@
+{
+  "jobId": "11111111-2222-4333-8444-555555555555",
+  "mode": "marketplace",
+  "status": "succeeded",
+  "progress": "Fetching details... (3/3)",
+  "startedAt": "2026-11-09T20:00:00.000Z",
+  "finishedAt": "2026-11-09T20:00:11.420Z",
+  "searchUrl": "https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?keyword=fahrrad&isNavigation=true&areaId=900",
+  "result": {
+    "querySummary": "fahrrad (wien, limit 3)",
+    "resultCount": 3,
+    "durationMs": 11420,
+    "items": [
+      {
+        "id": "932558165",
+        "title": "gelegenheit ! blechgarage, Moderne Garage !!! gartenschuppen, garage, gartenhaus, fertiggarage, doppeltgarage, gartenhütte, metallgarage, moderne garage, carport, gartenhaus, stahlhalle, Linz , Graz, Innsbruck, Wels, Klagenfurt am Wörthersee",
+        "price": "€ 6.600",
+        "url": "https://www.willhaben.at/iad/kaufen-und-verkaufen/d/gelegenheit-blechgarage-moderne-garage-gartenschuppen-garage-gartenhaus-fertiggarage-doppeltgarage-gartenhuette-metallgarage-moderne-garage-carport-gartenhaus-stahlhalle-linz-graz-innsbruck-wels-klagenfurt-am-woerthersee-932558165/",
+        "description": "Nur unsere Firma LiderStal gewährt 10 Jahre Garantie auf Produkte mit dem deutschen TÜV Rheinland Qualitätszertifikat. !!!\n\n\n\n\nParameter der verkauften  Abstellraum, ein Raum für Fahrräder, ein Hauswirtschaftsraum.\n\nBreite 5 m\n\nLange 3 m\n\nDachneigung nach hinten\n\nHöhe vorne 2,20 m\n\nHöhe hinten 2,00 m\n\n1xTür 100x200 cm an der 3 m langen Wand in der Mitte Platziert mit Öffnung nach links\n\n1x Doppelfalttür vorne 1,5 x 2 m (jeder Flügel 0,75 cm)\n\nFarbe BTX 7016 mat\n\nBlatt im horizontalen Trapez T-22\n\nKonstruktion von 30x30 bis 40x60 geschlossenen verzinkte Profilen, die auf die Größe der Garage abgestimmt sind\n\nBearbeitungen: Dach und Ecken\n\n\n\n\nPreis 6600 €\n\nKostenlose Transport !!!\n\n\n\n\nWir bieten schnelle Lieferzeiten, sogar von 2 bis 40 Tagen ab dem Datum der Bestellung.\n\nTelefonnummer\n\nDer Untergrund muss vom Kunden vorbereitet werden:\n\n* Der Bereich unter der Platte muss eben und gleichmäßig sein\n\n* Das Beste wäre natürlich ein Estrich, aber es ist nicht notwendig, es reicht aus, das Fundament oder die Betonfüße zu gießen (mindestens 4 an jedem Ende der Garage).\n\n* Das am häufigsten verwendete Substrat sind verlegte und ebene Betonplatten.\n\nUnsere Produkte werden aus dem besten Stahl hergestellt und die Blech ist in der ersten Klasse.\n\nWir bieten Garagen :\n\n- Standard-Garagen oder Untypische-Garage\n\n- Verschiedene Dachtypen: Satteldach, Seitendach, Pultdach ( nach hinten nach vorne, nach links nach rechts)\n\n- Verzinktes oder Farbeblech\n\n- Einzelgaragen oder Doppelgaragen\n\n- Konstruktionen auf individuellen Wunsch\n\nKontaktieren Sie uns und fragen Sie unsere Berater nach dem Preis u Telefonnummer oder per e-mail\n\nMehr Informationen vom Anbieter\n\n/",
+        "attributes": "Zustand: Neu | Übergabe: Versand"
+      },
+      {
+        "id": "911861422",
+        "title": "Männershirt",
+        "price": "€ 8",
+        "url": "https://www.willhaben.at/iad/kaufen-und-verkaufen/d/maennershirt-911861422/",
+        "description": "Fahrradshirt in Größe Large\nVon A zu A 52,5cm",
+        "attributes": "Marke: Andere Marken | Größe: 50 / L | Muster: Andere Muster | Farbe: Gelb | Zustand: Gebraucht | Übergabe: Selbstabholung, Versand"
+      },
+      {
+        "id": "816861100",
+        "title": "4 x Vintage Fahrradfelge Hinterrad mit Torpedo 3-Gang-Nabe",
+        "price": "€ 7",
+        "url": "https://www.willhaben.at/iad/kaufen-und-verkaufen/d/4-x-vintage-fahrradfelge-hinterrad-mit-torpedo-3-gang-nabe-816861100/",
+        "description": "4 Stk. Vintage Hinterrad-Felge mit Torpedo 3-Gang-Nabe für Bastler (für Puch, KTM, RWC, Hercules Fahrrad 60-80er Jahre)\n\n\n\n\n26 Zoll und 27,7 Zoll, alle mit Fehlern (Rücktritt schmiert, dreht durch, Nabe ausgebaut, etc. -siehe Fotos).\n\n\n\n\n\n\n\npro Stück 7€\n\nalle 4 Stück zusammen 20€\n\n\n\n\n\n\n\nBesichtigung/Abholung/Funktionsprüfung bei Barzahlung 1070 Wien/Kaiserstrasse Höhe Burggasse; Privatverkauf (keine Gewährleistung, keine Rücknahme).",
+        "attributes": "Zustand: Defekt | Übergabe: Selbstabholung"
+      }
+    ]
+  }
+}

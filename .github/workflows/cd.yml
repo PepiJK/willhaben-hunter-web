@@ -1,0 +1,134 @@
+name: Release CD
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: read
+  packages: write
+
+jobs:
+  quality-gates:
+    name: Backend & Frontend Quality Gates
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.node-version'
+          cache: 'npm'
+          cache-dependency-path: |
+            backend/package-lock.json
+            frontend/package-lock.json
+
+      - name: Backend quality gates
+        working-directory: backend
+        run: |
+          npm ci
+          npm run format:check
+          npm run lint
+          npm run test:ci
+          npm run build
+
+      - name: Frontend quality gates
+        working-directory: frontend
+        run: |
+          npm ci
+          npm run format:check
+          npm run lint
+          npm run test:ci
+          npm run build
+
+  build-and-push:
+    name: Build & Push Image to GHCR
+    needs: quality-gates
+    runs-on: ubuntu-latest
+    outputs:
+      image_tag: ${{ steps.meta.outputs.tag }}
+      image_repo: ${{ steps.meta.outputs.repo }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Normalize repository & tag metadata
+        id: meta
+        run: |
+          REPO_LOWER=$(echo "${{ github.repository }}" | tr '[:upper:]' '[:lower:]')
+          echo "repo=${REPO_LOWER}" >> "$GITHUB_OUTPUT"
+          echo "tag=${{ github.event.release.tag_name }}" >> "$GITHUB_OUTPUT"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to GitHub Container Registry (ghcr.io)
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ steps.meta.outputs.repo }}:${{ steps.meta.outputs.tag }}
+            ghcr.io/${{ steps.meta.outputs.repo }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  deploy:
+    name: Deploy to pepnet.at
+    needs: build-and-push
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy release container over SSH
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+          DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+          DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          GHCR_ACTOR: ${{ github.actor }}
+          GHCR_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          IMAGE_REPO: ${{ needs.build-and-push.outputs.image_repo }}
+          IMAGE_TAG: ${{ needs.build-and-push.outputs.image_tag }}
+        run: |
+          install -m 600 -D /dev/null ~/.ssh/id_deploy
+          printf '%s\n' "${DEPLOY_SSH_KEY}" > ~/.ssh/id_deploy
+          ssh-keyscan -H "${DEPLOY_HOST}" >> ~/.ssh/known_hosts
+
+          ssh -i ~/.ssh/id_deploy "${DEPLOY_USER}@${DEPLOY_HOST}" \
+            "GHCR_ACTOR='${GHCR_ACTOR}' GHCR_TOKEN='${GHCR_TOKEN}' GITHUB_REPOSITORY='${IMAGE_REPO}' IMAGE_TAG='${IMAGE_TAG}' bash -s" << 'EOF'
+            set -euo pipefail
+            cd /opt/pepnet/willhaben-hunter-web
+
+            git fetch --tags --prune
+            git checkout "${IMAGE_TAG}"
+
+            echo "${GHCR_TOKEN}" | docker login ghcr.io -u "${GHCR_ACTOR}" --password-stdin
+            GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" IMAGE_TAG="${IMAGE_TAG}" docker compose pull
+            GITHUB_REPOSITORY="${GITHUB_REPOSITORY}" IMAGE_TAG="${IMAGE_TAG}" docker compose up -d
+            docker image prune -f
+
+            healthy=false
+            for attempt in $(seq 1 15); do
+              if docker exec willhaben-web node -e "fetch('http://127.0.0.1:8000/api/healthz').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))" >/dev/null 2>&1; then
+                echo "willhaben-web is healthy at release ${IMAGE_TAG}"
+                healthy=true
+                break
+              fi
+              sleep 2
+            done
+
+            if [ "${healthy}" != "true" ]; then
+              echo "ERROR: willhaben-web failed healthcheck after deployment" >&2
+              docker logs --tail 50 willhaben-web >&2
+              exit 1
+            fi
+
+            docker exec willhaben-web node dist/smoke.js
+          EOF
